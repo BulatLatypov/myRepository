@@ -1,0 +1,14 @@
+﻿{
+  "Descriptor": {
+    "UId": "c3f02bc8-540f-4f8a-960d-44b76365a57e",
+    "Name": "NavAuto1Page",
+    "ModifiedOnUtc": "\/Date(1709546357000)\/",
+    "Parent": {
+      "UId": "d62293c0-7f14-44b1-b547-735fb40499cd",
+      "Name": "BaseModulePageV2"
+    },
+    "ManagerName": "ClientUnitSchemaManager",
+    "Caption": "Страница редактирования: \"Автомобиль\"",
+    "DependsOn": []
+  }
+}

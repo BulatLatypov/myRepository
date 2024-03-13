@@ -1,0 +1,14 @@
+﻿{
+  "Descriptor": {
+    "UId": "d8b99e68-0238-41a3-aa3a-1bdf2ea23a37",
+    "Name": "NavInvoiceType",
+    "ModifiedOnUtc": "\/Date(1709305630000)\/",
+    "Parent": {
+      "UId": "11ab4bcb-9b23-4b6d-9c86-520fae925d75",
+      "Name": "BaseLookup"
+    },
+    "ManagerName": "EntitySchemaManager",
+    "Caption": "Object",
+    "DependsOn": []
+  }
+}

@@ -2,13 +2,23 @@
   "Descriptor": {
     "UId": "818fc5e0-d8e7-fbf0-8617-30756d1d7933",
     "Name": "NavAuto",
-    "ModifiedOnUtc": "\/Date(1709256028000)\/",
+    "ModifiedOnUtc": "\/Date(1709535026000)\/",
     "Maintainer": "Customer",
     "DependsOn": [
+      {
+        "UId": "516f7ad2-afe0-4d38-bdc6-9e3e15a172ef",
+        "PackageVersion": "7.8.0",
+        "Name": "BaseProcessDesigner"
+      },
       {
         "UId": "5be3998b-c5c3-42bb-a01c-2e4149059a97",
         "PackageVersion": "7.8.0",
         "Name": "Base"
+      },
+      {
+        "UId": "a7d9c356-450c-46d7-bc85-72dca4e280ba",
+        "PackageVersion": "7.8.0",
+        "Name": "NUI"
       }
     ]
   }

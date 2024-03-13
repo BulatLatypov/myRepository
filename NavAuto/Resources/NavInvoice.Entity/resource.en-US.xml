@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Resources Culture="en-US">
+	<Group Type="String">
+		<Items>
+			<Item Name="Caption" Value="Object" />
+			<Item Name="Columns.Name.Caption" Value="Default_Название" />
+			<Item Name="Columns.NavAgreement.Caption" Value="Договор" />
+			<Item Name="Columns.NavAmount.Caption" Value="Сумма" />
+			<Item Name="Columns.NavDate.Caption" Value="Дата" />
+			<Item Name="Columns.NavFact.Caption" Value="Оплачен" />
+			<Item Name="Columns.NavInvoiceType.Caption" Value="Тип счета" />
+			<Item Name="Columns.NavName.Caption" Value="Название" />
+			<Item Name="Columns.NavNotes.Caption" Value="Заметки" />
+			<Item Name="Columns.NavPayDate.Caption" Value="Дата" />
+			<Item Name="EventsProcessSchema.Caption" Value="Бизнес-процесс" />
+		</Items>
+	</Group>
+</Resources>

@@ -1,0 +1,14 @@
+﻿{
+  "Descriptor": {
+    "UId": "9c79e38e-bea3-408b-bebc-8bcfd0ce87dc",
+    "Name": "NavAgreementFolder",
+    "ModifiedOnUtc": "\/Date(1709682326000)\/",
+    "Parent": {
+      "UId": "d602bf96-d029-4b07-9755-63c8f5cb5ed5",
+      "Name": "BaseFolder"
+    },
+    "ManagerName": "EntitySchemaManager",
+    "Caption": "Группа Договор",
+    "DependsOn": []
+  }
+}
