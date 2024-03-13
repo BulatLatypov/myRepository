@@ -401,10 +401,34 @@ FodyWeavers.xsd
 placeholder.txt
 
 # Ignore everything
-*/
+#*/
 
 # But not these files...
 !.gitignore
 !LICENSE
 !README.md
 !NavAuto/
+/AnalyticsDashboard/Files
+/Base/Files
+/CampaignDesigner/Files
+/CaseService/Files
+/ContentBuilder/Files
+/CoreForecast/Files
+/Custom
+/Deduplication/Files
+/DesignerTools/Files
+/Exchange/Files
+/HomePage/Files
+/IntegrationV2/Files/cs
+/MarketingCampaign/Files
+/nav
+/NUI/Files
+/OmnichannelMessaging/Files
+/OpenIdAuth
+/PivotTable/Files
+/RelationshipDesigner/Files
+/ServiceDesigner/Files
+/SspWorkplace/Files/cs
+/Tracking/Files
+/UIv2/Files
+/Workplace/Files/cs

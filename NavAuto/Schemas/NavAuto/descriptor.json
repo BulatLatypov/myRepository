@@ -1,0 +1,14 @@
+﻿{
+  "Descriptor": {
+    "UId": "20e33491-0d98-451c-8360-32c0d1b82d84",
+    "Name": "NavAuto",
+    "ModifiedOnUtc": "\/Date(1709557026000)\/",
+    "Parent": {
+      "UId": "11ab4bcb-9b23-4b6d-9c86-520fae925d75",
+      "Name": "BaseLookup"
+    },
+    "ManagerName": "EntitySchemaManager",
+    "Caption": "Object",
+    "DependsOn": []
+  }
+}

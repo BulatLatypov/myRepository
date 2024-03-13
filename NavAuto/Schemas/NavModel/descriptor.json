@@ -1,0 +1,14 @@
+﻿{
+  "Descriptor": {
+    "UId": "5236df77-0a53-4ff1-a720-385249bb2421",
+    "Name": "NavModel",
+    "ModifiedOnUtc": "\/Date(1709556780000)\/",
+    "Parent": {
+      "UId": "11ab4bcb-9b23-4b6d-9c86-520fae925d75",
+      "Name": "BaseLookup"
+    },
+    "ManagerName": "EntitySchemaManager",
+    "Caption": "Object",
+    "DependsOn": []
+  }
+}

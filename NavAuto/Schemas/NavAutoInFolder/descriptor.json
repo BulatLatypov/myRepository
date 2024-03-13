@@ -1,0 +1,14 @@
+﻿{
+  "Descriptor": {
+    "UId": "48f6205c-906d-411a-8356-375651f9c046",
+    "Name": "NavAutoInFolder",
+    "ModifiedOnUtc": "\/Date(1709546181000)\/",
+    "Parent": {
+      "UId": "4f63bafb-e9e7-4082-b92e-66b97c14017c",
+      "Name": "BaseItemInFolder"
+    },
+    "ManagerName": "EntitySchemaManager",
+    "Caption": "Автомобиль в группе",
+    "DependsOn": []
+  }
+}

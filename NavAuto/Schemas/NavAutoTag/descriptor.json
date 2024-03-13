@@ -1,0 +1,14 @@
+﻿{
+  "Descriptor": {
+    "UId": "3b16f8a5-ecd2-4a9a-96ba-04ea6d5de7f3",
+    "Name": "NavAutoTag",
+    "ModifiedOnUtc": "\/Date(1709546185000)\/",
+    "Parent": {
+      "UId": "9e3f203c-e905-4de5-9468-335b193f2439",
+      "Name": "BaseTag"
+    },
+    "ManagerName": "EntitySchemaManager",
+    "Caption": "Тег раздела Автомобиль",
+    "DependsOn": []
+  }
+}

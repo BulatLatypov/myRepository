@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Resources Culture="th-TH">
+	<Group Type="String">
+		<Items>
+			<Item Name="Caption" Value="Страница редактирования: &quot;Договор&quot;" />
+			<Item Name="LocalizableStrings.NavSchema65084d83Detail64b14a49DetailCaptionOnPage.Value" Value="ออบเจ็กต์" />
+			<Item Name="LocalizableStrings.NavSchemae305ec23Detaildb658f5cDetailCaptionOnPage.Value" Value="ออบเจ็กต์" />
+		</Items>
+	</Group>
+</Resources>
