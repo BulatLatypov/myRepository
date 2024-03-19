@@ -1,0 +1,13 @@
+﻿{
+  "Descriptor": {
+    "UId": "e2274b21-87e4-41d9-98fe-7fbfd58be877",
+    "Name": "NavInvoiceFile",
+    "ModifiedOnUtc": "\/Date(1709683193000)\/",
+    "Parent": {
+      "UId": "556c5867-60a7-4456-aae1-a57a122bef70",
+      "Name": "File"
+    },
+    "ManagerName": "EntitySchemaManager",
+    "Caption": "Файл и ссылка объекта Счет"
+  }
+}

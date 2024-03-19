@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Resources Culture="en-US">
+	<Group Type="String">
+		<Items>
+			<Item Name="Caption" Value="Object" />
+			<Item Name="Columns.Name.Caption" Value="Default_Название" />
+			<Item Name="Columns.NavCode.Caption" Value="Код" />
+			<Item Name="Columns.NavName.Caption" Value="Название" />
+			<Item Name="EventsProcessSchema.Caption" Value="Бизнес-процесс" />
+		</Items>
+	</Group>
+</Resources>

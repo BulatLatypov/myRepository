@@ -1,0 +1,24 @@
+﻿{
+  "PackageData": [
+    {
+      "Row": [
+        {
+          "SchemaColumnUId": "ae0e45ca-c495-4fe7-a39d-3ab7278e1617",
+          "Value": "efb5f2b3-654a-4194-af17-a432125d180d"
+        },
+        {
+          "SchemaColumnUId": "49ad8ee2-65a6-4cdd-b8f6-85c2f10a54dc",
+          "Value": "Счет"
+        },
+        {
+          "SchemaColumnUId": "631e7238-2751-4a21-b6d6-9f1ac0c84f95",
+          "Value": "38b66a44-830a-4c42-af7b-b424e1a38e1d"
+        },
+        {
+          "SchemaColumnUId": "8585929c-62ae-4673-ae8d-bb37f87e5144",
+          "Value": "a0ba8712-baa6-46fe-9249-fc36d591b88d"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+﻿{
+  "Descriptor": {
+    "UId": "e29a07af-5e0f-4ee4-96dd-778c42f6f18a",
+    "Name": "NavAuto8fd526b7Section",
+    "ModifiedOnUtc": "\/Date(1709546154000)\/",
+    "Parent": {
+      "UId": "7912fb69-4fee-429f-8b23-93943c35d66d",
+      "Name": "BaseSectionV2"
+    },
+    "ManagerName": "ClientUnitSchemaManager",
+    "Caption": "Схема раздела: \"Автомобиль\""
+  }
+}

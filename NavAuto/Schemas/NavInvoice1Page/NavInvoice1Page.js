@@ -1,7 +1,41 @@
+ define("NavAgreementNameEdit", [], function (){
+	Ext.define("Terrasoft.controls.NavAgreementNameEdit", {
+		extend: "Terrasoft.controls.BaseEdit",
+		alternateClassName: "Terrasoft.NavAgreementNameEdit",
+		onEnterKeyPressed: function(){
+			this.callParent(arguments);
+			alert(this.$NavName);
+		},
+		/*
+		onBlur: function(){
+			this.callParent(arguments);
+			alert("hello");
+		},
+		*/
+	});	
+	
+	
+	
+});
+
 define("NavInvoice1Page", [], function() {
 	return {
 		entitySchemaName: "NavInvoice",
-		attributes: {},
+		attributes: {
+			"IsModelItemsEnabled" : {
+				dataValueType: Terrasoft.DataValueType.BOOLEAN,
+				value: true
+			},
+			
+			"ChangeNavFact": {
+				"dependencies" : [
+					{
+					"columns": ["NavFact"],
+					"methodName": "setCardLockoutStatus"
+					} 
+				]
+			}
+		},
 		modules: /**SCHEMA_MODULES*/{}/**SCHEMA_MODULES*/,
 		details: /**SCHEMA_DETAILS*/{
 			"Files": {
@@ -14,9 +48,28 @@ define("NavInvoice1Page", [], function() {
 			}
 		}/**SCHEMA_DETAILS*/,
 		businessRules: /**SCHEMA_BUSINESS_RULES*/{}/**SCHEMA_BUSINESS_RULES*/,
-		methods: {},
+		methods: {
+			
+			setCardLockoutStatus: function(){
+				var fact = this.$NavFact;
+				if(fact == true){
+					this.set("IsModelItemsEnabled", false);
+				}
+			},
+			onEntityInitialized: function(){
+				this.callParent(arguments);
+				this.setCardLockoutStatus();
+			}
+		},
 		dataModels: /**SCHEMA_DATA_MODELS*/{}/**SCHEMA_DATA_MODELS*/,
 		diff: /**SCHEMA_DIFF*/[
+			{
+				"operation": "merge",
+				"name": "CardContentWrapper",
+				"values": {
+					"generator": "DisableControlsGenerator.generatePartial"
+				}
+			},
 			{
 				"operation": "insert",
 				"name": "NavName32c1a563-ffcf-4ed0-be11-a6092565fb7c",
@@ -28,7 +81,8 @@ define("NavInvoice1Page", [], function() {
 						"row": 0,
 						"layoutName": "ProfileContainer"
 					},
-					"bindTo": "NavName"
+					"bindTo": "NavName",
+					
 				},
 				"parentName": "ProfileContainer",
 				"propertyName": "items",
@@ -135,6 +189,23 @@ define("NavInvoice1Page", [], function() {
 				"parentName": "ProfileContainer",
 				"propertyName": "items",
 				"index": 6
+			},
+			{
+				"operation": "insert",
+				"name": "NavFact1d161b3d-9f70-41fe-9c27-f0c3d03e4e8c",
+				"values": {
+					"layout": {
+						"colSpan": 24,
+						"rowSpan": 1,
+						"column": 0,
+						"row": 7,
+						"layoutName": "ProfileContainer"
+					},
+					"bindTo": "NavFact"
+				},
+				"parentName": "ProfileContainer",
+				"propertyName": "items",
+				"index": 7
 			},
 			{
 				"operation": "insert",

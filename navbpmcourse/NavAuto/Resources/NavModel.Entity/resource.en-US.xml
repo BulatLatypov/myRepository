@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Resources Culture="en-US">
+	<Group Type="String">
+		<Items>
+			<Item Name="Caption" Value="Object" />
+			<Item Name="Columns.Name.Caption" Value="Default_Название" />
+			<Item Name="Columns.NavBrand.Caption" Value="Бренд" />
+			<Item Name="Columns.NavColor.Caption" Value="Цвет" />
+			<Item Name="Columns.NavDetails.Caption" Value="Комплектация" />
+			<Item Name="Columns.NavName.Caption" Value="Название" />
+			<Item Name="Columns.NavNotes.Caption" Value="Заметки" />
+			<Item Name="Columns.NavRecommendedAmount.Caption" Value="Стоимость" />
+			<Item Name="Columns.NavVolume.Caption" Value="Объем двигателя" />
+			<Item Name="Columns.NavYear.Caption" Value="Год выпуска" />
+			<Item Name="EventsProcessSchema.Caption" Value="Бизнес-процесс" />
+		</Items>
+	</Group>
+</Resources>

@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Resources Culture="en-US">
+	<Group Type="String">
+		<Items>
+			<Item Name="Caption" Value="Object" />
+			<Item Name="Columns.Name.Caption" Value="Default_Название" />
+			<Item Name="Columns.NavAmount.Caption" Value="Стоимость" />
+			<Item Name="Columns.NavBrand.Caption" Value="Бренд" />
+			<Item Name="Columns.NavDetails.Caption" Value="Комплектация" />
+			<Item Name="Columns.NavInAccident.Caption" Value="Был в дтп" />
+			<Item Name="Columns.NavKm.Caption" Value="Пробег" />
+			<Item Name="Columns.NavModel.Caption" Value="Модель" />
+			<Item Name="Columns.NavName.Caption" Value="Название" />
+			<Item Name="Columns.NavNotes.Caption" Value="Заметки" />
+			<Item Name="Columns.NavOwnersCount.Caption" Value="Количество владельцев" />
+			<Item Name="Columns.NavUsed.Caption" Value="С пробегом" />
+			<Item Name="Columns.NavVechcleNumber.Caption" Value="Номер двигателя" />
+			<Item Name="Columns.NavVin.Caption" Value="VIN" />
+			<Item Name="EventsProcessSchema.Caption" Value="Бизнес-процесс" />
+		</Items>
+	</Group>
+</Resources>
