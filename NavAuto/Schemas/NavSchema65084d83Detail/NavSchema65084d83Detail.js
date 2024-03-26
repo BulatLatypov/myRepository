@@ -1,5 +1,5 @@
-define("NavSchema65084d83Detail", ["ConfigurationGrid", "ConfigurationGridGenerator",
-	"ConfigurationGridUtilitiesV2"], function() {
+define("NavSchema65084d83Detail", ["ServiceHelper", "ConfigurationGrid", "ConfigurationGridGenerator",
+	"ConfigurationGridUtilitiesV2"], function(ServiceHelper) {
 	return {
 		entitySchemaName: "NavInvoice",
 		attributes: {
@@ -15,6 +15,12 @@ define("NavSchema65084d83Detail", ["ConfigurationGrid", "ConfigurationGridGenera
 		methods: {
 			onActiveRowAction: function(buttonTag, primaryColumnValue) {
 				this.mixins.ConfigurationGridUtilitiesV2.onActiveRowAction.call(this, buttonTag, primaryColumnValue);
+			},
+			onCloseSelectedInvoices: function(){
+				var serviceData = {
+					SelectedItems: this.getSelectedItems()
+				};
+				ServiceHelper.callService("NavCloseSelectedInvoicesService", "NavCloseSelectedInvoices", function(response){}, serviceData, this);
 			}
 		},
 		diff: /**SCHEMA_DIFF*/[
@@ -69,7 +75,18 @@ define("NavSchema65084d83Detail", ["ConfigurationGrid", "ConfigurationGridGenera
 					"activeRowAction": {"bindTo": "onActiveRowAction"},
 					"multiSelect": {"bindTo": "MultiSelect"}
 				}
-			}
+			},
+			{
+				"operation": "insert",
+				"parentName": "Detail",
+				"propertyName": "tools",
+				"name": "CloseSelectedInvoices",
+				"values": {
+					itemType: Terrasoft.ViewItemType.BUTTON,
+					caption: "Закрыть выбранные",
+					click: {bindTo: "onCloseSelectedInvoices"},
+				}
+			},
 		]/**SCHEMA_DIFF*/
 	};
 });

@@ -1,23 +1,3 @@
- define("NavAgreementNameEdit", [], function (){
-	Ext.define("Terrasoft.controls.NavAgreementNameEdit", {
-		extend: "Terrasoft.controls.BaseEdit",
-		alternateClassName: "Terrasoft.NavAgreementNameEdit",
-		onEnterKeyPressed: function(){
-			this.callParent(arguments);
-			alert(this.$NavName);
-		},
-		/*
-		onBlur: function(){
-			this.callParent(arguments);
-			alert("hello");
-		},
-		*/
-	});	
-	
-	
-	
-});
-
 define("NavInvoice1Page", [], function() {
 	return {
 		entitySchemaName: "NavInvoice",
@@ -51,8 +31,7 @@ define("NavInvoice1Page", [], function() {
 		methods: {
 			
 			setCardLockoutStatus: function(){
-				var fact = this.$NavFact;
-				if(fact == true){
+				if(this.$NavFact == true){
 					this.set("IsModelItemsEnabled", false);
 				}
 			},

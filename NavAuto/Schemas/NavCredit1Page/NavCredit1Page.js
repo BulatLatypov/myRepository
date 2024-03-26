@@ -2,15 +2,6 @@ define("NavCredit1Page", [], function() {
 	return {
 		entitySchemaName: "NavCredit",
 		attributes: {
-			"OnChangedNavDateStartEnd":{
-				"dependencies" : [
-					{
-					"columns": ["NavDateStart", "NavDateEnd"],
-					//"methodName": "onChangedNavDateStartEnd"
-					} 
-				]
-			}
-			
 		},
 		modules: /**SCHEMA_MODULES*/{}/**SCHEMA_MODULES*/,
 		details: /**SCHEMA_DETAILS*/{

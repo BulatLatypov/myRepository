@@ -15,6 +15,32 @@ define("NavAgreement1Page", ["NavAgreementNameEdit"], function() { //
 					} 
 				]
 			},
+			"OnSelectedAuto":{
+				"dependencies" : [
+					{
+					"columns": ["NavAuto"],
+					"methodName": "setNavSumma"
+					} 
+				]
+			},
+			"OnSelectedCredit":{
+				"dependencies" : [
+					{
+					"columns": ["NavCredit"],
+					"methodName": "isSelectedNavCredit"
+					} 
+				]
+			},
+			"NavCredit":{
+				"lookupListConfig":{
+					"columns": ["NavCreditPeriod", "NavDateStart", "NavDateEnd", "NavPercent"]
+				}
+			},
+			"NavAuto":{
+				"lookupListConfig":{
+					"columns": ["NavAmount", "NavUsed", "NavModel.NavRecommendedAmount"]
+				}
+			},
 			
 		},
 		modules: /**SCHEMA_MODULES*/{}/**SCHEMA_MODULES*/,
@@ -38,12 +64,49 @@ define("NavAgreement1Page", ["NavAgreementNameEdit"], function() { //
 		}/**SCHEMA_DETAILS*/,
 		methods: {
 			isVisibleNavCredit: function(){
-				var auto = this.$NavAuto.value;
-				var contact = this.$NavContact.value;
+				var auto = this.$NavAuto?.value;
+				var contact = this.$NavContact?.value;
 				if(auto && contact){
 					this.set("IsVisibleNavCredit", true);
 				}
 			},
+			
+			isSelectedNavCredit: function(){
+				
+				this.$NavCreditPeriod = this.$NavCredit["NavCreditPeriod"];
+				
+			},
+			
+			setNavSumma: function(){
+				if(this.$NavAuto["NavUsed"]){
+					this.$NavSumma = this.$NavAuto["NavAmount"];
+				}
+				else{
+					this.$NavSumma = this.$NavAuto["NavModel.NavRecommendedAmount"];
+				}
+			},
+			
+			onRecalculateCredit: function(){
+				this.$NavCreditAmount = this.$NavSumma - this.$NavInitialFee;
+				this.$NavFullCreditAmount = (this.$NavCredit["NavPercent"]/100 * this.$NavCreditPeriod * this.$NavCreditAmount) + this.$NavCreditAmount;
+			},
+			
+			save: function(){
+				if(this.$NavCredit["NavDateEnd"] < this.$NavDate){
+					this.showInformationDialog("Дата договора не может быть позже даты завершения кредита");
+				}
+				else{
+					this.callParent(arguments);
+				}
+			},
+			
+			onEntityInitialized: function(){
+				this.callParent(arguments);
+				if(this.$NavAuto?.value && this.$NavContact?.value){
+					this.set("IsVisibleNavCredit", true);
+				}	
+			}
+
 		},
 		dataModels: /**SCHEMA_DATA_MODELS*/{}/**SCHEMA_DATA_MODELS*/,
 		businessRules: /**SCHEMA_BUSINESS_RULES*/{
@@ -68,7 +131,22 @@ define("NavAgreement1Page", ["NavAgreementNameEdit"], function() { //
 			}
 		}/**SCHEMA_BUSINESS_RULES*/,
 		diff: /**SCHEMA_DIFF*/[
-
+			{
+				"operation": "insert",
+				"parentName": "ActionButtonsContainer",
+				"propertyName": "items",
+				"name": "RecalculateCredit",
+				"values": {
+					itemType: Terrasoft.ViewItemType.BUTTON,
+					caption: "Пересчитать кредит",
+					click: {bindTo: "onRecalculateCredit"},
+					"layout":{
+						"column": 1,
+						"row": 6,
+						"colSpan": 1,
+					}
+				}
+			},
 			{
 				"operation": "insert",
 				"name": "NavAutoba8feac5-8995-452f-8d11-47da9fc861e1",
