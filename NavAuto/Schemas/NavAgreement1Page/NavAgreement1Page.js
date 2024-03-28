@@ -78,17 +78,21 @@ define("NavAgreement1Page", ["NavAgreementNameEdit"], function() { //
 			},
 			
 			setNavSumma: function(){
-				if(this.$NavAuto["NavUsed"]){
-					this.$NavSumma = this.$NavAuto["NavAmount"];
-				}
-				else{
-					this.$NavSumma = this.$NavAuto["NavModel.NavRecommendedAmount"];
+				if(this.$NavAuto?.value){
+					if(this.$NavAuto["NavUsed"]){
+						this.$NavSumma = this.$NavAuto["NavAmount"];
+					}
+					else{
+						this.$NavSumma = this.$NavAuto["NavModel.NavRecommendedAmount"];
+					}
 				}
 			},
 			
 			onRecalculateCredit: function(){
-				this.$NavCreditAmount = this.$NavSumma - this.$NavInitialFee;
-				this.$NavFullCreditAmount = (this.$NavCredit["NavPercent"]/100 * this.$NavCreditPeriod * this.$NavCreditAmount) + this.$NavCreditAmount;
+				if(this.$NavCredit?.value){
+					this.$NavCreditAmount = this.$NavSumma - this.$NavInitialFee;
+					this.$NavFullCreditAmount = (this.$NavCredit["NavPercent"]/100 * this.$NavCreditPeriod * this.$NavCreditAmount) + this.$NavCreditAmount;
+				}
 			},
 			
 			save: function(){

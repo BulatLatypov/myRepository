@@ -20,7 +20,7 @@ define("NavSchema65084d83Detail", ["ServiceHelper", "ConfigurationGrid", "Config
 				var serviceData = {
 					SelectedItems: this.getSelectedItems()
 				};
-				ServiceHelper.callService("NavCloseSelectedInvoicesService", "NavCloseSelectedInvoices", function(response){}, serviceData, this);
+				ServiceHelper.callService("NavCloseSelectedInvoicesService", "NavCloseSelectedInvoices", function(response){this.reloadGridData();}, serviceData, this);
 			}
 		},
 		diff: /**SCHEMA_DIFF*/[
