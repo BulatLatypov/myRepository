@@ -12,26 +12,30 @@ using System;
 	[AspNetCompatibilityRequirements(RequirementsMode = AspNetCompatibilityRequirementsMode.Required)]
 	public class NavCloseSelectedInvoicesService: BaseService
 	{
-		/* Метод, закрывающий выбранные счета по id  */
+		// Метод, закрывающий выбранные счета по id 
 		[OperationContract]
 		[WebInvoke(Method = "POST", RequestFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Wrapped, ResponseFormat = WebMessageFormat.Json)]
-		public void NavCloseSelectedInvoices(List<string> SelectedItems) {
-			var esq = new EntitySchemaQuery(UserConnection.EntitySchemaManager, "NavInvoice");
-			var Id = esq.AddColumn("Id");
-			var NavFact = esq.AddColumn("NavFact");
-			esq.AddAllSchemaColumns();
-			var esqFilter = esq.CreateFilterWithParameters(FilterComparisonType.Equal, "Id", SelectedItems.ToArray());
-			
-			esq.Filters.Add(esqFilter);
-
-			var entities = esq.GetEntityCollection(UserConnection);
-			if (entities.Count > 0)
+		public void NavCloseSelectedInvoices(List<string> SelectedItems) 
+		{
+			if(SelectedItems != null)
 			{
-				foreach(var entity in entities)
+				var esq = new EntitySchemaQuery(UserConnection.EntitySchemaManager, nameof(NavInvoice));
+				var Id = esq.AddColumn("Id");
+				var NavFact = esq.AddColumn("NavFact");
+				esq.AddAllSchemaColumns();
+				var esqFilter = esq.CreateFilterWithParameters(FilterComparisonType.Equal, "Id", SelectedItems.ToArray());
+
+				esq.Filters.Add(esqFilter);
+
+				var entities = esq.GetEntityCollection(UserConnection);
+				if (entities.Count > 0)
 				{
-					entity.SetColumnValue(NavFact.Name, true);
-					entity.Save();				
-				}			
+					foreach(var entity in entities)
+					{
+						entity.SetColumnValue(NavFact.Name, true);
+						entity.Save();				
+					}			
+				}
 			}
 		}
 	}
