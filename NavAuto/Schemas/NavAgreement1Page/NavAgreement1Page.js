@@ -1,4 +1,4 @@
-define("NavAgreement1Page", [], function() {
+define("NavAgreement1Page", ["NavAgreementNameEdit"], function() { //
 	return {
 		entitySchemaName: "NavAgreement",
 		attributes: {
@@ -6,7 +6,7 @@ define("NavAgreement1Page", [], function() {
 			"IsVisibleNavCredit": {
  				dataValueType: this.Terrasoft.DataValueType.BOOLEAN,
  				value: false
- 				},
+			},
 			"OnChangedNavAutoandNavContact":{
 				"dependencies" : [
 					{
@@ -15,19 +15,33 @@ define("NavAgreement1Page", [], function() {
 					} 
 				]
 			},
-			
-			"IsVisibleNavCreditTab": {
-				dataValueType: this.Terrasoft.DataValueType.BOOLEAN,
- 				value: false
+			"OnSelectedAuto":{
+				"dependencies" : [
+					{
+					"columns": ["NavAuto"],
+					"methodName": "setNavSumma"
+					} 
+				]
 			},
-			"OnChangedNavCredit":{
+			"OnSelectedCredit":{
 				"dependencies" : [
 					{
 					"columns": ["NavCredit"],
-					"methodName": "isVisibleNavCreditTab"
+					"methodName": "isSelectedNavCredit"
 					} 
 				]
-			},	
+			},
+			"NavCredit":{
+				"lookupListConfig":{
+					"columns": ["NavCreditPeriod", "NavDateStart", "NavDateEnd", "NavPercent"]
+				}
+			},
+			"NavAuto":{
+				"lookupListConfig":{
+					"columns": ["NavAmount", "NavUsed", "NavModel.NavRecommendedAmount"]
+				}
+			},
+			
 		},
 		modules: /**SCHEMA_MODULES*/{}/**SCHEMA_MODULES*/,
 		details: /**SCHEMA_DETAILS*/{
@@ -50,39 +64,92 @@ define("NavAgreement1Page", [], function() {
 		}/**SCHEMA_DETAILS*/,
 		methods: {
 			isVisibleNavCredit: function(){
-				var auto = this.$NavAuto.value;
-				var contact = this.$NavContact.value;
+				var auto = this.$NavAuto?.value;
+				var contact = this.$NavContact?.value;
 				if(auto && contact){
 					this.set("IsVisibleNavCredit", true);
 				}
 			},
 			
+			isSelectedNavCredit: function(){
+				
+				this.$NavCreditPeriod = this.$NavCredit["NavCreditPeriod"];
+				
+			},
 			
-			isVisibleNavCreditTab: function(){
-				var credit = this.$NavCredit.value;
-				if(credit){
-					this.set("IsVisibleNavCreditTab", true);
+			setNavSumma: function(){
+				if(this.$NavAuto?.value){
+					if(this.$NavAuto["NavUsed"]){
+						this.$NavSumma = this.$NavAuto["NavAmount"];
+					}
+					else{
+						this.$NavSumma = this.$NavAuto["NavModel.NavRecommendedAmount"];
+					}
 				}
+			},
+			
+			onRecalculateCredit: function(){
+				if(this.$NavCredit?.value){
+					this.$NavCreditAmount = this.$NavSumma - this.$NavInitialFee;
+					this.$NavFullCreditAmount = (this.$NavCredit["NavPercent"]/100 * this.$NavCreditPeriod * this.$NavCreditAmount) + this.$NavCreditAmount;
+				}
+			},
+			
+			save: function(){
+				if(this.$NavCredit["NavDateEnd"] < this.$NavDate){
+					this.showInformationDialog("Дата договора не может быть позже даты завершения кредита");
+				}
+				else{
+					this.callParent(arguments);
+				}
+			},
+			
+			onEntityInitialized: function(){
+				this.callParent(arguments);
+				if(this.$NavAuto?.value && this.$NavContact?.value){
+					this.set("IsVisibleNavCredit", true);
+				}	
 			}
+
 		},
 		dataModels: /**SCHEMA_DATA_MODELS*/{}/**SCHEMA_DATA_MODELS*/,
+		businessRules: /**SCHEMA_BUSINESS_RULES*/{
+			"Tab620f0c6fTabLabel": {
+				"11c82ca3-cd53-4827-91fc-0c174c72b820": {
+					"uId": "11c82ca3-cd53-4827-91fc-0c174c72b820",
+					"enabled": true,
+					"removed": false,
+					"ruleType": 0,
+					"property": 0,
+					"logical": 0,
+					"conditions": [
+						{
+							"comparisonType": 2,
+							"leftExpression": {
+								"type": 1,
+								"attribute": "NavCredit"
+							}
+						}
+					]
+				}
+			}
+		}/**SCHEMA_BUSINESS_RULES*/,
 		diff: /**SCHEMA_DIFF*/[
 			{
 				"operation": "insert",
-				"name": "Name3dd29787-feb0-4793-81ec-c37b3d728576",
-				"values": {
-					"layout": {
-						"colSpan": 24,
-						"rowSpan": 1,
-						"column": 0,
-						"row": 0,
-						"layoutName": "ProfileContainer"
-					},
-					"bindTo": "Name"
-				},
-				"parentName": "ProfileContainer",
+				"parentName": "ActionButtonsContainer",
 				"propertyName": "items",
-				"index": 0
+				"name": "RecalculateCredit",
+				"values": {
+					itemType: Terrasoft.ViewItemType.BUTTON,
+					caption: "Пересчитать кредит",
+					click: {bindTo: "onRecalculateCredit"},
+					"layout":{
+						"column": 1,
+						"row": 6,
+						"colSpan": 1,
+					}
+				}
 			},
 			{
 				"operation": "insert",
@@ -92,14 +159,14 @@ define("NavAgreement1Page", [], function() {
 						"colSpan": 24,
 						"rowSpan": 1,
 						"column": 0,
-						"row": 1,
+						"row": 2,
 						"layoutName": "ProfileContainer"
 					},
 					"bindTo": "NavAuto"
 				},
 				"parentName": "ProfileContainer",
 				"propertyName": "items",
-				"index": 1
+				"index": 0
 			},
 			{
 				"operation": "insert",
@@ -109,14 +176,14 @@ define("NavAgreement1Page", [], function() {
 						"colSpan": 24,
 						"rowSpan": 1,
 						"column": 0,
-						"row": 2,
+						"row": 3,
 						"layoutName": "ProfileContainer"
 					},
 					"bindTo": "NavDate"
 				},
 				"parentName": "ProfileContainer",
 				"propertyName": "items",
-				"index": 2
+				"index": 1
 			},
 			{
 				"operation": "insert",
@@ -126,7 +193,7 @@ define("NavAgreement1Page", [], function() {
 						"colSpan": 24,
 						"rowSpan": 1,
 						"column": 0,
-						"row": 3,
+						"row": 1,
 						"layoutName": "ProfileContainer"
 					},
 					"bindTo": "NavContact",
@@ -135,24 +202,25 @@ define("NavAgreement1Page", [], function() {
 				},
 				"parentName": "ProfileContainer",
 				"propertyName": "items",
-				"index": 3
+				"index": 2
 			},
 			{
 				"operation": "insert",
 				"name": "NavName8264130f-d797-4d11-9caf-ec79e9c37e3e",
 				"values": {
+					"className": "Terrasoft.NavAgreementNameEdit",
 					"layout": {
 						"colSpan": 24,
 						"rowSpan": 1,
 						"column": 0,
-						"row": 4,
+						"row": 0,
 						"layoutName": "ProfileContainer"
 					},
 					"bindTo": "NavName"
 				},
 				"parentName": "ProfileContainer",
 				"propertyName": "items",
-				"index": 4
+				"index": 3
 			},
 			{
 				"operation": "insert",
@@ -162,34 +230,34 @@ define("NavAgreement1Page", [], function() {
 						"colSpan": 24,
 						"rowSpan": 1,
 						"column": 0,
-						"row": 5,
+						"row": 4,
 						"layoutName": "ProfileContainer"
 					},
 					"bindTo": "NavSumma"
 				},
 				"parentName": "ProfileContainer",
 				"propertyName": "items",
-				"index": 5
+				"index": 4
 			},
 			{
 				"operation": "insert",
 				"name": "NavCredit73d58804-e55c-4c07-8637-565627b127d4",
 				"values": {
-					"visible": { 
+					"visible": {
 						"bindTo": "IsVisibleNavCredit"
 					},
 					"layout": {
 						"colSpan": 24,
 						"rowSpan": 1,
 						"column": 0,
-						"row": 6,
+						"row": 5,
 						"layoutName": "ProfileContainer"
 					},
 					"bindTo": "NavCredit"
 				},
 				"parentName": "ProfileContainer",
 				"propertyName": "items",
-				"index": 6
+				"index": 5
 			},
 			{
 				"operation": "insert",
@@ -224,10 +292,7 @@ define("NavAgreement1Page", [], function() {
 						"bindTo": "Resources.Strings.Tab620f0c6fTabLabelTabCaption"
 					},
 					"items": [],
-					"order": 1,
-					"visible": {
-						"bindTo": "IsVisibleNavCreditTab"
-					}
+					"order": 1
 				},
 				"parentName": "Tabs",
 				"propertyName": "tabs",
@@ -253,7 +318,7 @@ define("NavAgreement1Page", [], function() {
 				"name": "Tab620f0c6fTabLabelGridLayoute90a2b4e",
 				"values": {
 					"itemType": 0,
-					"items": [],
+					"items": []
 				},
 				"parentName": "Tab620f0c6fTabLabelGroup81d2aad9",
 				"propertyName": "items",

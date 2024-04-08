@@ -7,7 +7,7 @@
 			<Item Name="Columns.NavAgreement.Caption" Value="Договор" />
 			<Item Name="Columns.NavAmount.Caption" Value="Сумма" />
 			<Item Name="Columns.NavDate.Caption" Value="Дата" />
-			<Item Name="Columns.NavFact.Caption" Value="Оплачен" />
+			<Item Name="Columns.NavFact.Caption" Value="Оплачен2" />
 			<Item Name="Columns.NavInvoiceType.Caption" Value="Тип счета" />
 			<Item Name="Columns.NavName.Caption" Value="Название" />
 			<Item Name="Columns.NavNotes.Caption" Value="Заметки" />

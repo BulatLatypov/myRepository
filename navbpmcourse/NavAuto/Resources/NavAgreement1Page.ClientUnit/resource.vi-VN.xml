@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Resources Culture="vi-VN">
+	<Group Type="String">
+		<Items>
+			<Item Name="Caption" Value="Страница редактирования: &quot;Договор&quot;" />
+			<Item Name="LocalizableStrings.NavSchema65084d83Detail64b14a49DetailCaptionOnPage.Value" Value="Đối tượng" />
+		</Items>
+	</Group>
+</Resources>

@@ -1,7 +1,8 @@
 define("NavCredit1Page", [], function() {
 	return {
 		entitySchemaName: "NavCredit",
-		attributes: {},
+		attributes: {
+		},
 		modules: /**SCHEMA_MODULES*/{}/**SCHEMA_MODULES*/,
 		details: /**SCHEMA_DETAILS*/{
 			"Files": {
@@ -14,7 +15,19 @@ define("NavCredit1Page", [], function() {
 			}
 		}/**SCHEMA_DETAILS*/,
 		businessRules: /**SCHEMA_BUSINESS_RULES*/{}/**SCHEMA_BUSINESS_RULES*/,
-		methods: {},
+		methods: {
+			save: function(){
+				var dateStart = this.$NavDateStart;
+				var dateEnd = this.$NavDateEnd;
+				if(dateEnd.getFullYear() - dateStart.getFullYear() < 1 ){
+					this.showInformationDialog("Дата окончания кредита должна быть больше даты начала кредита не менее чем на 1 год");
+					
+				}
+				else {
+					this.callParent(arguments);
+				}
+			}
+		},
 		dataModels: /**SCHEMA_DATA_MODELS*/{}/**SCHEMA_DATA_MODELS*/,
 		diff: /**SCHEMA_DIFF*/[
 			{

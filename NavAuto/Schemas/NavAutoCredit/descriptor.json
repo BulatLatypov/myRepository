@@ -1,0 +1,13 @@
+﻿{
+  "Descriptor": {
+    "UId": "355fa285-7e3c-4a8a-8b39-e83236d74d4e",
+    "Name": "NavAutoCredit",
+    "ModifiedOnUtc": "\/Date(1711351353000)\/",
+    "Parent": {
+      "UId": "11ab4bcb-9b23-4b6d-9c86-520fae925d75",
+      "Name": "BaseLookup"
+    },
+    "ManagerName": "EntitySchemaManager",
+    "Caption": "NavAutoCredit"
+  }
+}

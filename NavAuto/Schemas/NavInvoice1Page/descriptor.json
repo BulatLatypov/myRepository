@@ -2,7 +2,7 @@
   "Descriptor": {
     "UId": "09231e28-5266-4e4a-bf51-dca6c1ae5978",
     "Name": "NavInvoice1Page",
-    "ModifiedOnUtc": "\/Date(1710108388000)\/",
+    "ModifiedOnUtc": "\/Date(1710930536000)\/",
     "Parent": {
       "UId": "d62293c0-7f14-44b1-b547-735fb40499cd",
       "Name": "BaseModulePageV2"

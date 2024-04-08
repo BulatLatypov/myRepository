@@ -1,0 +1,13 @@
+﻿{
+  "Descriptor": {
+    "UId": "0dec642f-d9d2-44ae-9f09-d04fca582d7d",
+    "Name": "NavAgreementTag",
+    "ModifiedOnUtc": "\/Date(1709682343000)\/",
+    "Parent": {
+      "UId": "9e3f203c-e905-4de5-9468-335b193f2439",
+      "Name": "BaseTag"
+    },
+    "ManagerName": "EntitySchemaManager",
+    "Caption": "Тег раздела Договор"
+  }
+}
