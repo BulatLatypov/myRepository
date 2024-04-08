@@ -12,7 +12,10 @@ using System;
 	[AspNetCompatibilityRequirements(RequirementsMode = AspNetCompatibilityRequirementsMode.Required)]
 	public class NavCloseSelectedInvoicesService: BaseService
 	{
-		// Метод, закрывающий выбранные счета по id 
+		/// <summary>
+		/// Метод, закрывающий выбранные счета по id 
+		/// </summary>
+		/// <param name="SelectedItems"></param>
 		[OperationContract]
 		[WebInvoke(Method = "POST", RequestFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Wrapped, ResponseFormat = WebMessageFormat.Json)]
 		public void NavCloseSelectedInvoices(List<string> SelectedItems) 
