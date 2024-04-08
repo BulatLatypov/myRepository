@@ -10,7 +10,10 @@
 	using SystemSettings = Terrasoft.Core.Configuration.SysSettings;
 
 
-	[EntityEventListener(SchemaName = "NavAgreement")]
+    /// <summary>
+    /// Переопределенные методы для событий в сущности "договор"
+    /// </summary>
+    [EntityEventListener(SchemaName = "NavAgreement")]
 	public class NavAgreementEventListener : BaseEntityEventListener
 	{
 		public override void OnSaving(object sender, EntityBeforeEventArgs e) {

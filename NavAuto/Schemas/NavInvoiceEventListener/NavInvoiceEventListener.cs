@@ -2,13 +2,18 @@
 {
     using System;
     using Terrasoft.Common;
-	using Terrasoft.Configuration.RightsService;
+    using Terrasoft.Configuration.Dev.Pkg.NavAuto.Schemas.NavCloseSelectedInvoicesService;
+    using Terrasoft.Configuration.RightsService;
 	using Terrasoft.Core;
 	using Terrasoft.Core.DB;
 	using Terrasoft.Core.Entities;
 	using Terrasoft.Core.Entities.Events;
 	using SystemSettings = Terrasoft.Core.Configuration.SysSettings;
 
+
+	/// <summary>
+	/// Переопределенные методы для событий в сущности "счет"
+	/// </summary>
 	[EntityEventListener(SchemaName = "NavInvoice")]
 	public class NavInvoiceEventListener : BaseEntityEventListener
 	{
@@ -25,23 +30,29 @@
 		}
 		public override void OnInserting(object sender, EntityBeforeEventArgs e)
 		{
-			checkInvoiceExisting(sender, e);
-            recalculateFactSumma(sender, e);
+			CheckInvoiceExisting(sender, e);
+            RecalculateFactSumma(sender, e);
             base.OnInserting(sender, e);	
 		}
 		public override void OnUpdating(object sender, EntityBeforeEventArgs e)
 		{
-			checkInvoiceExisting(sender, e);
-            recalculateFactSumma(sender, e);
+			CheckInvoiceExisting(sender, e);
+            RecalculateFactSumma(sender, e);
             base.OnUpdating(sender, e);
 		}
 		public override void OnDeleting(object sender, EntityBeforeEventArgs e)
 		{
-            recalculateFactSumma(sender, e);
+            RecalculateFactSumma(sender, e);
 			base.OnDeleting(sender, e);
 		}
 
-		public static void recalculateFactSumma(object sender, EntityBeforeEventArgs e)
+		/// <summary>
+		/// Метод для пересчета оплаченной суммы при измении счетов
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
+		/// <exception cref="Exception"></exception>
+		public static void RecalculateFactSumma(object sender, EntityBeforeEventArgs e)
 		{
             var entity = (Entity)sender;
             var invoice = (NavInvoice)entity;
@@ -84,7 +95,14 @@
 				
             }
         }
-        public static void checkInvoiceExisting(object sender, EntityBeforeEventArgs e)
+
+		/// <summary>
+		/// Метод для проверки дублирования счетов 
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
+		/// <exception cref="Exception"></exception>
+        public static void CheckInvoiceExisting(object sender, EntityBeforeEventArgs e)
         {
             var entity = (Entity)sender;
             var invoice = (NavInvoice)entity;
@@ -105,9 +123,6 @@
     }
 	
 	
-	 public static class NavInvoiceConstants
-	 {
-		 public static Guid manualCreating = new Guid("224ced1e-b37d-4f0a-8a8b-3910940f816c");
-	 }
+
 	
 }
