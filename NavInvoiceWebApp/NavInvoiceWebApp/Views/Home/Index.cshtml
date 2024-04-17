@@ -1,0 +1,23 @@
+﻿@model UserInputModel
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <form method="post" asp-controller="home" asp-action="Index">
+        <div class="form-group">   
+            <input asp-for="NavAgreementName" type="text" placeholder="Номер договора">
+            <span asp-validation-for="NavAgreementName" class="text-danger"></span>
+        
+        
+            <input asp-for="NavInvoiceSumma" type="text" placeholder="Сумма счета">
+            <span asp-validation-for="NavInvoiceSumma" class="text-danger"></span>
+        
+            <button type="submit">Создать счет</button>
+        </div>
+    </form>
+</div>
+
